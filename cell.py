@@ -2,7 +2,7 @@ from graphics import Window , Line, Point
 
  
 class Cell():
-    def __init__(self,  win:Window) -> None:
+    def __init__(self,  win = None) -> None:
         self.has_left_wall = True
         self.has_right_wall = True
         self.has_top_wall = True 
@@ -14,25 +14,43 @@ class Cell():
         self._win = win
     
     def draw(self , x1:int ,x2:int ,y1:int ,y2:int):
+        if self._win == None:
+            return
         self._x1 = x1
         self._x2 = x2
         self._y1 = y1
         self._y2 = y2
 
         if self.has_left_wall:
-            l =Line(Point(x1 ,y1),Point(x1,y2))
-            self._win.draw_line(l)
+            self._win.draw_line(Line(Point(x1 ,y1),Point(x1,y2)))
         if self.has_right_wall:
-            l =Line(Point(x2,y1),Point(x2,y2))
-            self._win.draw_line(l)
+            self._win.draw_line(Line(Point(x2,y1),Point(x2,y2)))
         if self.has_bottom_wall:
-            l =Line(Point(x1,y2),Point(x2,y2))
-            self._win.draw_line(l)
+            self._win.draw_line(Line(Point(x1,y2),Point(x2,y2)))
         if self.has_top_wall:
-            l =Line(Point(x1,y1),Point(x2,y1))
-            self._win.draw_line(l)
+            self._win.draw_line(Line(Point(x1,y1),Point(x2,y1)))
+        return
 
+    def draw_move(self , to_cell , undo:bool = False):
+        l = Line(self.center_point(),to_cell.center_point())
+        color = "red" if not undo  else "grey" 
+        self._win.draw_line(l, color )
 
+    def center_point(self):
+        x = 0
+        y = 0
+        if self._x1 is not None and self._x2 is not None :
+            x = (self._x2 + self._x1) /2
+        else:
+            x = self._x1 if self._x1 is not None else self._x2
+
+        if self._y1 is not None and self._y2 is not None:
+            y = (self._y2 + self._y1) /2 
+        else:
+            y = self._y1 if self._y1 is not None else self._y2 
+
+        center_point = Point(x,y)
+        return center_point
 
 
 

@@ -1,7 +1,7 @@
 from tkinter import Tk, Canvas , BOTH
 
 class Point():
-    def __init__(self,x:int , y:int) -> None:
+    def __init__(self,x , y ) -> None:
         self.x = x
         self.y = y 
     
