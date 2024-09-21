@@ -1,4 +1,4 @@
-from graphics import Window , Line, Point
+from graphics import Line, Point
 
  
 class Cell():
@@ -12,7 +12,8 @@ class Cell():
         self._y1 = None
         self._y2 = None
         self._win = win
-    
+        self.visited = False 
+
     def draw(self , x1:int ,x2:int ,y1:int ,y2:int):
         if self._win == None:
             return
