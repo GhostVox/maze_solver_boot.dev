@@ -1,4 +1,4 @@
-# Maze Solver
+# Mazetrix
 
 A Python-based maze generator and solver with a graphical interface built using Tkinter. This project was created as part of the [Boot.dev](https://www.boot.dev) curriculum and demonstrates algorithm implementation, object-oriented programming, and GUI development concepts.
 
